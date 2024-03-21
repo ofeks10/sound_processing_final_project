@@ -62,7 +62,7 @@ def create_classifier(encoder, input_shape, trainable=True):
     model.compile(
         optimizer = keras.optimizers.Adam(learning_rate=0.0001),
         loss = keras.losses.BinaryCrossentropy(),
-        metrics=[keras.metrics.BinaryAccuracy()]
+        metrics=[keras.metrics.BinaryAccuracy(), keras.metrics.Recall(), keras.metrics.Precision()]
     )
 
     return model
