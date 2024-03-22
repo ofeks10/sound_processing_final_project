@@ -70,6 +70,7 @@ def _preprocess_dataset(dataset: tf.data.Dataset) -> tf.data.Dataset:
     apply the augmentation pipeline to the dataset, then preprocess the samples
     """
     dataset = dataset.map(_preprocess_sample_audio)
+    dataset = dataset.repeat(2)
     dataset = dataset.map(lambda x, y: (_audio_augmentation(x), y))
     dataset = dataset.map(_preprocess_sample_to_spectogram)
     return dataset
